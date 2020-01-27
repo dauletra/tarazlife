@@ -9,6 +9,10 @@
 
         <CardBlock class="mb-4" v-bind:title="rent_title" v-bind:categories="rent_categories" v-bind:organizations="rent_organizations" />
 
+<!--        todo JobList-->
+
+<!--        todo AnonsBlock-->
+
         <div class="mb-4 border" style="height: 180px"></div>
     </div>
 </template>
