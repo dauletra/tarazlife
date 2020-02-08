@@ -1,12 +1,12 @@
 <template>
     <div class="bg-white" style="">
-        <div class="mb-3 ml-3 ml-md-0 h5 font-weight-bold">{{title}}</div>
+        <BlockHeader>{{title}}</BlockHeader>
         <div class="mb-3 d-flex hide-scroll-bar">
-            <div class="p-1 p-md-2 ml-3 ml-md-0 mr-md-3 rounded text-nowrap" style="background-color: #e6e6e6" v-for="category in categories" v-bind:key="category.id">{{category.name}}</div>
+            <div class="p-1 p-md-2 ml-3 mr-md-3 rounded text-nowrap" style="background-color: #e6e6e6" v-for="category in categories" v-bind:key="category.id">{{category.name}}</div>
         </div>
 
         <div class="d-flex hide-scroll-bar shadow-only-right" style="">
-            <div class="ml-3 ml-md-0 mr-md-3 border rounded" style="width: 201px; min-width: 201px;" v-for="organization in organizations" v-bind:key="organization.id">
+            <div class="ml-3 mr-md-3 border rounded" style="width: 201px; min-width: 201px;" v-for="organization in organizations" v-bind:key="organization.id">
                 <div class="p-1 text-center text-nowrap overflow-hidden" style="text-overflow: ellipsis;">{{organization.title}}</div>
                 <div style="height: 100px; max-height: 100px">
                     <img v-bind:src="organization.img" alt="" class="img-fluid" />
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+    import BlockHeader from '@/components/BlockHeader.vue'
+
     export default {
         name: "CardBlock",
         props: {
@@ -32,6 +34,9 @@
             return {
 
             }
+        },
+        components: {
+            BlockHeader
         }
     }
 </script>

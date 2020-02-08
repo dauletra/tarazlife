@@ -1,15 +1,59 @@
 <template>
-    <div class="container-fluid px-0" style="max-width: 800px; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: .95rem">
+    <div class="container-fluid px-0 border" style="max-width: 800px; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: .95rem">
         <div class="mb-4 border" style="height: 180px"></div>
-        <CardBlock class="mb-4" title="Услуги" v-bind:categories="service_categories" v-bind:organizations="services" />
 
-        <CardBlock class="mb-4" title="Еда" v-bind:categories="service_categories" v-bind:organizations="services" />
+        <div class="my-4 py-4 bg-dark">
+            <BlockHeader class="text-white">Новости</BlockHeader>
+            <div class="hide-scroll-bar d-flex">
+                <div class="ml-3  mr-md-3 position-relative " style="width: 221px; min-width: 221px" v-for="burnoe_new in burnoe_news" v-bind:key="burnoe_new.id">
+                    <div class="">
+                        <img v-bind:src="burnoe_new.photo" class="img-fluid" alt="" />
+                    </div>
+                    <div class="position-absolute p-2 h-100 d-flex align-items-end" style="bottom: 0; background-color: rgba(0,0,0,0.45)">
+                        <span class="text-white">{{burnoe_new.title}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <CardBlock class="mb-4" title="Развлечение" v-bind:categories="service_categories" v-bind:organizations="services" />
+        <div class="my-4 py-2">
+            <BlockHeader>Статьи</BlockHeader>
+            <div class="hide-scroll-bar d-flex">
+                <div class="ml-3 border article-rounded-top" style="width: 161px; min-width: 161px" v-for="burnoe_new in burnoe_news" v-bind:key="burnoe_new.id">
+                    <div class="">
+                        <img src="https://via.placeholder.com/160x100" class="article-rounded-top" alt="" />
+                    </div>
+                    <div class="p-2" style="font-size: 0.8rem;">
+                        {{burnoe_new.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <CardBlock class="mb-4" v-bind:title="rent_title" v-bind:categories="rent_categories" v-bind:organizations="rent_organizations" />
+        <div class="my-4">
+            <BlockHeader>Статьи</BlockHeader>
+            <div>
+                <div class="px-3 pb-3 d-flex" v-for="article in burnoe_news" v-bind:key="article.id">
+                    <div class="d-none d-sm-block" style="width: 131px; min-width: 131px">
+                        <img src="https://via.placeholder.com/130x70" alt="" />
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-muted small">14:30</div>
+                        <div>{{article.title}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <JobsBlock v-bind:jobs="jobs" />
+        <CardBlock class="my-4" title="Услуги" v-bind:categories="service_categories" v-bind:organizations="services" />
+
+        <CardBlock class="my-4" title="Еда" v-bind:categories="service_categories" v-bind:organizations="services" />
+
+        <CardBlock class="my-4" title="Развлечение" v-bind:categories="service_categories" v-bind:organizations="services" />
+
+        <CardBlock class="my-4" v-bind:title="rent_title" v-bind:categories="rent_categories" v-bind:organizations="rent_organizations" />
+
+        <JobsBlock class="my-4" v-bind:jobs="jobs" />
 
         <!--        todo AdvertsBlock -->
         <!--        todo NewsBlock -->
@@ -190,6 +234,55 @@
                         title: 'Оператор (девушка)',
                         description: 'Компьютерный клуб, опыт работы год и больше'
                     },
+                ],
+                burnoe_news: [
+                    {
+                        id: 1,
+                        title: 'Почему закрыли барахолку в Алматы',
+                        photo: 'https://via.placeholder.com/220x150/F0D165'
+                    },
+                    {
+                        id: 2,
+                        title: 'Врачи Алматы спасли жизнь роженице, умиравшей из-за разрыва печени',
+                        photo: 'https://via.placeholder.com/220x150/F0D165'
+                    },
+                    {
+                        id: 3,
+                        title: 'Комнаты в студенческих общежитиях сдают в аренду в Алматы',
+                        photo: 'https://via.placeholder.com/220x150/F0D165'
+                    },
+                    {
+                        id: 4,
+                        title: 'В Семее задержали серийного автовора, им оказался подросток',
+                        photo: 'https://via.placeholder.com/220x150/F0D165'
+                    },
+                    {
+                        id: 5,
+                        title: 'Самолет посадили в Шымкенте, чтобы высадить дебоширов',
+                        photo: 'https://via.placeholder.com/220x150/F0D165'
+                    }
+                ],
+                articles: [
+                    {
+                        id: 1,
+                        title: 'Почему закрыли барахолку в Алматы'
+                    },
+                    {
+                        id: 2,
+                        title: 'Врачи Алматы спасли жизнь роженице, умиравшей из-за разрыва печени'
+                    },
+                    {
+                        id: 3,
+                        title: 'Комнаты в студенческих общежитиях сдают в аренду в Алматы'
+                    },
+                    {
+                        id: 4,
+                        title: 'В Семее задержали серийного автовора, им оказался подросток'
+                    },
+                    {
+                        id: 5,
+                        title: 'Самолет посадили в Шымкенте, чтобы высадить дебоширов'
+                    }
                 ]
             }
         },
@@ -210,5 +303,9 @@
     .hide-scroll-bar::-webkit-scrollbar { /* WebKit */
         width: 0;
         height: 0;
+    }
+    .article-rounded-top {
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
     }
 </style>
