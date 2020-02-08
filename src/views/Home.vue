@@ -9,21 +9,17 @@
 
         <CardBlock class="mb-4" v-bind:title="rent_title" v-bind:categories="rent_categories" v-bind:organizations="rent_organizations" />
 
-        <div>
-            <BlockHeader>Работа</BlockHeader>
-            <div class="ml-3 mb-2 pb-3" v-for="job in jobs" v-bind:key="job.id">
-                <span class="">
-                    {{job.title}}
-                </span>
-                <span class="text-nowrap text-muted" style="font-size: .88rem">
-                    {{job.description}}
-                </span>
-            </div>
+        <JobsBlock v-bind:jobs="jobs" />
+
+        <!--        todo AdvertsBlock -->
+        <!--        todo NewsBlock -->
+        <!--        todo ArticlesBlock -->
+
+        <div class="mb-4 border" style="height: 180px">
+            <span class="small">_version=0.01</span>
+            <font-awesome-icon icon="user-secret" />
+            <font-awesome-icon :icon="['fab', 'whatsapp']" />
         </div>
-
-<!--        todo AnonsBlock -->
-
-        <div class="mb-4 border" style="height: 180px"></div>
     </div>
 </template>
 
@@ -32,6 +28,7 @@
     // import HelloWorld from '@/components/HelloWorld.vue'
     import BlockHeader from '@/components/BlockHeader.vue'
     import CardBlock from '@/components/CardBlock.vue'
+    import JobsBlock from '@/components/JobsBlock.vue'
 
     export default {
         name: 'home',
@@ -198,7 +195,8 @@
         },
         components: {
             BlockHeader,
-            CardBlock
+            CardBlock,
+            JobsBlock
         }
     }
 </script>
