@@ -9,9 +9,19 @@
 
         <CardBlock class="mb-4" v-bind:title="rent_title" v-bind:categories="rent_categories" v-bind:organizations="rent_organizations" />
 
-<!--        todo JobList-->
+        <div>
+            <BlockHeader>Работа</BlockHeader>
+            <div class="ml-3 mb-2 pb-3" v-for="job in jobs" v-bind:key="job.id">
+                <span class="">
+                    {{job.title}}
+                </span>
+                <span class="text-nowrap text-muted" style="font-size: .88rem">
+                    {{job.description}}
+                </span>
+            </div>
+        </div>
 
-<!--        todo AnonsBlock-->
+<!--        todo AnonsBlock -->
 
         <div class="mb-4 border" style="height: 180px"></div>
     </div>
@@ -20,6 +30,7 @@
 <script>
     // @ is an alias to /src
     // import HelloWorld from '@/components/HelloWorld.vue'
+    import BlockHeader from '@/components/BlockHeader.vue'
     import CardBlock from '@/components/CardBlock.vue'
 
     export default {
@@ -145,10 +156,48 @@
                         text: 'Койка места 5000 тг/сутка. Обед и ужин с нас. Поставим коммандировочные, есть ИП.',
                         footer: '8-747-112-63-03'
                     }
+                ],
+                jobs: [
+                    {
+                        id: 1,
+                        title: 'Учитель физики',
+                        description: 'Школа №29, от 55000 тг'
+                    },
+                    {
+                        id: 2,
+                        title: 'Кальянщик с опытом',
+                        description: 'Ночной клуб Мистер, график с 20:00 до 02:00 ночи'
+                    },
+                    {
+                        id: 3,
+                        title: 'Оператор (девушка)',
+                        description: 'Компьютерный клуб, опыт работы от года'
+                    },
+                    {
+                        id: 4,
+                        title: 'Наборщик текста',
+                        description: 'Можно работать из дома, оплата сдельная'
+                    },
+                    {
+                        id: 5,
+                        title: 'Учитель физики',
+                        description: 'Школа №29, временная работа'
+                    },
+                    {
+                        id: 6,
+                        title: 'Кальянщик с опытом',
+                        description: 'Ночной клуб Мистер, с 20:00 до 02:00 ночи'
+                    },
+                    {
+                        id: 7,
+                        title: 'Оператор (девушка)',
+                        description: 'Компьютерный клуб, опыт работы год и больше'
+                    },
                 ]
             }
         },
         components: {
+            BlockHeader,
             CardBlock
         }
     }
