@@ -1,6 +1,62 @@
 <template>
-    <div class="container-fluid px-0 border" style="max-width: 800px; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: .95rem">
-        <div class="mb-4 border" style="height: 180px"></div>
+    <div class="container-fluid px-0" style="max-width: 800px; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: .95rem">
+        <div class="mb-4 d-flex flex-column justify-content-center align-items-center" style="height: 200px">
+            <div class="h3">Burnoe.com</div>
+            <div class="d-flex">
+                <div class="small border text-center" style="width: 70px">
+                    <div>Сегодня</div>
+                    <div>+10 +12<sup>0</sup></div>
+                </div>
+                <div class="small border text-center" style="width: 70px">
+                    <div>Завтра</div>
+                    <div>+15 +16<sup>0</sup></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3  article-rounded-top" style="height: 1rem;">
+
+        </div>
+
+        <div class="mb-2 mb-md-4">
+            <div class="hide-scroll-bar d-flex">
+                <div class="ml-3 border" style="width: 150px; min-width: 150px" v-for="chosen in chosens" v-bind:key="chosen.id">
+                    <div class="text-center">
+                        <img src="https://via.placeholder.com/80x80" class="img-fluid rounded-circle" alt="" />
+                    </div>
+                    <div class="text-center" style="font-size: 0.8rem; height: 2.4rem;">
+                        {{chosen.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-show="false" class="my-4 py-2">
+            <div class="hide-scroll-bar d-flex">
+                <div class="ml-3 border article-rounded-top" style="width: 161px; min-width: 161px" v-for="burnoe_new in burnoe_news" v-bind:key="burnoe_new.id">
+                    <div class="">
+                        <img src="https://via.placeholder.com/160x100" class="article-rounded-top" alt="" />
+                    </div>
+                    <div class="p-2" style="font-size: 0.8rem;">
+                        {{burnoe_new.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-2 my-md-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <BlockHeader class="d-none d-sm-block">Объявлении</BlockHeader>
+                    <div class="ml-3 py-1" style="font-size: 0.85rem;" v-for="advert in articles" v-bind:key="advert.id">
+                        {{advert.title}}
+                    </div>
+                </div>
+                <div class="d-none d-sm-block pr-md-4" style="max-width: 14rem;">
+                    <img src="https://via.placeholder.com/200x200" class="img-fluid" alt="" />
+                </div>
+            </div>
+        </div>
 
         <div class="my-4 py-4 bg-dark">
             <BlockHeader class="text-white">Новости</BlockHeader>
@@ -11,20 +67,6 @@
                     </div>
                     <div class="position-absolute p-2 h-100 d-flex align-items-end" style="bottom: 0; background-color: rgba(0,0,0,0.45)">
                         <span class="text-white">{{burnoe_new.title}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="my-4 py-2">
-            <BlockHeader>Статьи</BlockHeader>
-            <div class="hide-scroll-bar d-flex">
-                <div class="ml-3 border article-rounded-top" style="width: 161px; min-width: 161px" v-for="burnoe_new in burnoe_news" v-bind:key="burnoe_new.id">
-                    <div class="">
-                        <img src="https://via.placeholder.com/160x100" class="article-rounded-top" alt="" />
-                    </div>
-                    <div class="p-2" style="font-size: 0.8rem;">
-                        {{burnoe_new.title}}
                     </div>
                 </div>
             </div>
@@ -55,7 +97,6 @@
 
         <JobsBlock class="my-4" v-bind:jobs="jobs" />
 
-        <!--        todo AdvertsBlock -->
         <!--        todo NewsBlock -->
         <!--        todo ArticlesBlock -->
 
@@ -78,6 +119,28 @@
         name: 'home',
         data: function() {
             return {
+                chosens: [
+                    {
+                        id: 1,
+                        title: 'Кафе "Три самурая"'
+                    },
+                    {
+                        id: 2,
+                        title: 'Прокат столы и стулья'
+                    },
+                    {
+                        id: 3,
+                        title: 'Кафе "Мирас"'
+                    },
+                    {
+                        id: 4,
+                        title: 'Русская Баня и Массаж'
+                    },
+                    {
+                        id: 5,
+                        title: 'Парикмахерская и Маникюр'
+                    }
+                ],
                 service_categories: [
                     {
                         id: 1,
@@ -305,7 +368,9 @@
         height: 0;
     }
     .article-rounded-top {
-        border-top-left-radius: .5rem;
-        border-top-right-radius: .5rem;
+        border-top-left-radius: 1.2rem;
+        border-top-right-radius: 1.2rem;
+        border: #999999 1px solid;
+        border-bottom: 0;
     }
 </style>
